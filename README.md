@@ -1,17 +1,25 @@
 # Detecting smells using deep learning
+## Requirements
+We generated the DesginSmells result  using pycharm for the repo.
 
-Implementation:
+We executed below smells using 4 different algorithms.
+rq1_cnn_1d.py
+rq1_cnn_2d.py
+rq1_rnn_emb_lstm.py
+rq2_rnn_emb_lstm.py
 
+Any smell execution and parameters and different smells can be updated in the subroutine run_final in their respective algorithm execution file.
+Execution the above algorithm python files using command `python <algorithm.py>` will generate the result under /data/learning_smells/<desgniatedresults>/raw
 
-
+##Implementation:
 The method we followed as follows:
 Download repositories:
 We used the following protocol to identify and download our subject systems. We download repositories containing C# and Java code from GitHub. We use RepoReapers to filter out low-quality repositories. RepoReapers analyzes GitHub repositories and provides scores for nine dimensions of quality. These dimensions are architecture, community, continuous integration, documentation, history, license, issues, and unit tests.
 
-#.Splitting code fragments:                                
+#Splitting code fragments:                                
 CodeSplit are utilities to split the methods or classes written in C# and Java source code into individual files. The utilities can parse the code correctly (using Roslyn for C# and Eclipse JDT for Java), and emit the individual methods or classes fragments into separate files following hierarchical structure (i.e., namespaces/packages become folders). CodeSplit for Java is an open-source project that can be found on GitHub. CodeSplit for C# can be downloaded freely online.
 
-#. Smells detection:
+#.Smells detection:
 We use Designite to detect smells in C# code. Designite is a software design quality assessment tool for projects written in C#. It supports detection of eleven implementations, 19 designs, and seven architecture smells. It also provides commonly used code metrics and other features such as trend analysis, code clones detection, and dependency structure matrix to help us assess the software quality. A free academic license can be requested for all the academic purposes. Similar to the C# version, we have developed DesigniteJava which is an open-source tool to analyze Java code. We use DesigniteJava to detect smells in the Java codebase. The tool supports detection of 17 design and ten implementation smells.
 We use console version of Designite (version 2.5.10) and DesigniteJava (version 1.1.0) to analyze C# and Java code respectively and detect design and implementation smells in each of the downloaded repositories.
 
