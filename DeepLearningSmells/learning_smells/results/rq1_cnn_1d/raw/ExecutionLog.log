@@ -1,0 +1,217 @@
+C:\Users\dell\anaconda3\python.exe C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\rq1_cnn_1d.py 
+2022-11-16 22:24:24.633370: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-11-16 22:24:24.634176: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+
+Processing ComplexMethod with Params: conv_layers=2, filter=32, kernel=5, pooling_window=4,epochs=2 
+reading data...
+width array size 26165
+min width 1
+max width 57012
+mean width 390.1758838142557
+standard deviation 681.7263155919946
+median width 288.0
+number of upper outliers removed 1204
+max width excluding upper outliers 1071
+width array size 466508
+min width 1
+max width 221890
+mean width 91.47690286125854
+standard deviation 653.9545376586921
+median width 49.0
+number of upper outliers removed 2553
+max width excluding upper outliers 745
+train_data: 10000
+train_labels: 10000
+eval_data: 146949
+eval_labels: 146949
+reading data... done.
+2022-11-16 22:25:41.233654: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-11-16 22:25:41.235548: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-11-16 22:25:41.257034: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-C4CN5G3
+2022-11-16 22:25:41.257711: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-C4CN5G3
+2022-11-16 22:25:41.282722: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv1d (Conv1D)             (None, 1067, 32)          192       
+                                                                 
+ batch_normalization (BatchN  (None, 1067, 32)         128       
+ ormalization)                                                   
+                                                                 
+ max_pooling1d (MaxPooling1D  (None, 532, 32)          0         
+ )                                                               
+                                                                 
+ conv1d_1 (Conv1D)           (None, 528, 64)           10304     
+                                                                 
+ batch_normalization_1 (Batc  (None, 528, 64)          256       
+ hNormalization)                                                 
+                                                                 
+ activation (Activation)     (None, 528, 64)           0         
+                                                                 
+ max_pooling1d_1 (MaxPooling  (None, 263, 64)          0         
+ 1D)                                                             
+                                                                 
+ dropout (Dropout)           (None, 263, 64)           0         
+                                                                 
+ flatten (Flatten)           (None, 16832)             0         
+                                                                 
+ dense (Dense)               (None, 32)                538656    
+                                                                 
+ dense_1 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 549,569
+Trainable params: 549,377
+Non-trainable params: 192
+_________________________________________________________________
+Epoch 1/2
+40/40 [==============================] - 41s 953ms/step - loss: 0.5454 - accuracy: 0.8149
+Epoch 2/2
+40/40 [==============================] - 37s 936ms/step - loss: 0.3608 - accuracy: 0.8500
+auc_keras:0.8371854584103724
+Test accuracy: 0.8504583239555359
+Precision score: 0.23
+Recall score: 0.82
+F1 score: 0.36
+Average precision-recall score: 0.20
+
+Processing ComplexConditional with Params: conv_layers=1, filter=32, kernel=5, pooling_window=4,epochs=2 
+reading data...
+width array size 6524
+min width 1
+max width 25482
+mean width 326.2496934396076
+standard deviation 706.1819405847622
+median width 172.0
+number of upper outliers removed 339
+max width excluding upper outliers 1032
+width array size 487484
+min width 1
+max width 221890
+mean width 104.64103642375954
+standard deviation 656.9850991980804
+median width 51.0
+number of upper outliers removed 4452
+max width excluding upper outliers 761
+train_data: 8658
+train_labels: 8658
+eval_data: 147293
+eval_labels: 147293
+reading data... done.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv1d (Conv1D)             (None, 1028, 32)          192       
+                                                                 
+ batch_normalization (BatchN  (None, 1028, 32)         128       
+ ormalization)                                                   
+                                                                 
+ max_pooling1d (MaxPooling1D  (None, 513, 32)          0         
+ )                                                               
+                                                                 
+ dropout (Dropout)           (None, 513, 32)           0         
+                                                                 
+ flatten (Flatten)           (None, 16416)             0         
+                                                                 
+ dense (Dense)               (None, 32)                525344    
+                                                                 
+ dense_1 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 525,697
+Trainable params: 525,633
+Non-trainable params: 64
+_________________________________________________________________
+Epoch 1/2
+34/34 [==============================] - 18s 501ms/step - loss: 1.3501 - accuracy: 0.7056
+Epoch 2/2
+34/34 [==============================] - 15s 450ms/step - loss: 0.6495 - accuracy: 0.7343
+auc_keras:0.7316236828044753
+Test accuracy: 0.6706428527832031
+Precision score: 0.03
+Recall score: 0.79
+F1 score: 0.06
+Average precision-recall score: 0.03
+
+Processing FeatureEnvy with Params: conv_layers=2, filter=32, kernel=11, pooling_window=2,epochs=3 
+reading data...
+width array size 1918
+min width 40
+max width 103000
+mean width 2663.728362877998
+standard deviation 5803.067537283335
+median width 1038.0
+number of upper outliers removed 118
+max width excluding upper outliers 8456
+width array size 171300
+min width 4
+max width 393835
+mean width 548.7671978984238
+standard deviation 2527.7064719740188
+median width 174.0
+number of upper outliers removed 4401
+max width excluding upper outliers 3075
+train_data: 2520
+train_labels: 2520
+eval_data: 50528
+eval_labels: 50528
+reading data... done.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv1d (Conv1D)             (None, 8446, 32)          384       
+                                                                 
+ batch_normalization (BatchN  (None, 8446, 32)         128       
+ ormalization)                                                   
+                                                                 
+ max_pooling1d (MaxPooling1D  (None, 4223, 32)         0         
+ )                                                               
+                                                                 
+ conv1d_1 (Conv1D)           (None, 4213, 64)          22592     
+                                                                 
+ batch_normalization_1 (Batc  (None, 4213, 64)         256       
+ hNormalization)                                                 
+                                                                 
+ activation (Activation)     (None, 4213, 64)          0         
+                                                                 
+ max_pooling1d_1 (MaxPooling  (None, 2106, 64)         0         
+ 1D)                                                             
+                                                                 
+ dropout (Dropout)           (None, 2106, 64)          0         
+                                                                 
+ flatten (Flatten)           (None, 134784)            0         
+                                                                 
+ dense (Dense)               (None, 32)                4313120   
+                                                                 
+ dense_1 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 4,336,513
+Trainable params: 4,336,321
+Non-trainable params: 192
+_________________________________________________________________
+Epoch 1/3
+2022-11-16 22:36:35.347059: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 276758528 exceeds 10% of free system memory.
+2022-11-16 22:36:35.762621: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 276758528 exceeds 10% of free system memory.
+2022-11-16 22:36:36.057506: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 276758528 exceeds 10% of free system memory.
+2022-11-16 22:36:36.317877: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 276103168 exceeds 10% of free system memory.
+2022-11-16 22:36:38.246477: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 276103168 exceeds 10% of free system memory.
+10/10 [==============================] - 91s 9s/step - loss: 6.3034 - accuracy: 0.5405
+Epoch 2/3
+10/10 [==============================] - 90s 9s/step - loss: 0.6966 - accuracy: 0.4861
+Epoch 3/3
+10/10 [==============================] - 88s 9s/step - loss: 0.6932 - accuracy: 0.5000
+auc_keras:0.5
+Test accuracy: 0.9895503520965576
+Precision score: 0.00
+C:\Users\dell\anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Recall score: 0.00
+F1 score: 0.00
+Average precision-recall score: 0.01
+
+Process finished with exit code 0

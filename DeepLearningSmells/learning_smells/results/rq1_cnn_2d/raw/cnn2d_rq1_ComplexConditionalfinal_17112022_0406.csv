@@ -1,0 +1,2 @@
+conv_layers,filters,kernel,max_pooling_window,epoch,stopped_epoch,auc,accuracy,precision,recall,f1,average_precision,time
+2,64,7,2,2,2,0.5000692664681028,0.011006325483322144,0.011007833375202686,1.0,0.02177596060448621,0.011007833375202686,3302.7546713352203

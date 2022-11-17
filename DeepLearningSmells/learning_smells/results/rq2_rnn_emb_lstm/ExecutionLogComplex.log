@@ -1,0 +1,99 @@
+C:\Users\dell\anaconda3\python.exe C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\rq2_rnn_emb_lstm.py 
+2022-11-17 07:33:57.890083: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-11-17 07:33:57.890438: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Processing ComplexMethod with Params: emb_output=16, lstm_units=32, layer=1, epoch=2 
+reading data...
+width array size 26165
+min width 1
+max width 57012
+mean width 390.1758838142557
+standard deviation 681.7263155919946
+median width 288.0
+number of upper outliers removed 1204
+max width excluding upper outliers 1071
+width array size 466508
+min width 1
+max width 221890
+mean width 91.47690286125854
+standard deviation 653.9545376586921
+median width 49.0
+number of upper outliers removed 2553
+max width excluding upper outliers 745
+reading data... done.
+max features: 19752
+2022-11-17 07:35:46.821822: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-11-17 07:35:46.823244: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-11-17 07:35:46.845732: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-C4CN5G3
+2022-11-17 07:35:46.846224: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-C4CN5G3
+2022-11-17 07:35:46.854065: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Epoch 1/2
+40/40 [==============================] - 355s 9s/step - loss: 0.5653 - accuracy: 0.7414
+Epoch 2/2
+40/40 [==============================] - 352s 9s/step - loss: 0.3992 - accuracy: 0.8551
+auc_keras:0.7456964922556294
+Test accuracy: 0.6466264128684998
+Precision score: 0.17
+Recall score: 0.74
+F1 score: 0.28
+Average precision-recall score: 0.14
+Processing ComplexConditional with Params: emb_output=32, lstm_units=32, layer=1, epoch=2 
+reading data...
+width array size 6524
+min width 1
+max width 25482
+mean width 326.2496934396076
+standard deviation 706.1819405847622
+median width 172.0
+number of upper outliers removed 339
+max width excluding upper outliers 1032
+width array size 487484
+min width 1
+max width 221890
+mean width 104.64103642375954
+standard deviation 656.9850991980804
+median width 51.0
+number of upper outliers removed 4452
+max width excluding upper outliers 761
+reading data... done.
+max features: 19752
+Epoch 1/2
+34/34 [==============================] - 344s 10s/step - loss: 0.5442 - accuracy: 0.7756
+Epoch 2/2
+34/34 [==============================] - 330s 10s/step - loss: 0.3408 - accuracy: 0.8958
+auc_keras:0.7632773643410853
+Test accuracy: 0.7466632127761841
+Precision score: 0.08
+Recall score: 0.70
+F1 score: 0.15
+Average precision-recall score: 0.07
+Processing FeatureEnvy with Params: emb_output=32, lstm_units=128, layer=1, epoch=3 
+reading data...
+width array size 1918
+min width 40
+max width 103000
+mean width 2663.728362877998
+standard deviation 5803.067537283335
+median width 1038.0
+number of upper outliers removed 118
+max width excluding upper outliers 8456
+width array size 171300
+min width 4
+max width 393835
+mean width 548.7671978984238
+standard deviation 2527.7064719740188
+median width 174.0
+number of upper outliers removed 4401
+max width excluding upper outliers 3075
+Traceback (most recent call last):
+  File "C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\rq2_rnn_emb_lstm.py", line 195, in <module>
+    data3 = get_all_data(training_data_path, eval_data_path, smell)
+  File "C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\rq2_rnn_emb_lstm.py", line 50, in get_all_data
+    inputs.get_data_rq2(training_data_path, eval_data_path, OUT_FOLDER, "rq2_rnn_" + smell,
+  File "C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\inputs.py", line 339, in get_data_rq2
+    ev_pos_data_arr = _retrieve_data(os.path.join(eval_data_path, "Positive"), max_input_length)
+  File "C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\inputs.py", line 447, in _retrieve_data
+    for file in os.listdir(path):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\WorkSpace\\Swetha_M20AIE317_SDE_PRJ\\DeepLearningSmells\\data\\tokenizer_java\\FeatureEnvy\\FeatureEnvy\\1d\\Positive'
+
+Process finished with exit code 1

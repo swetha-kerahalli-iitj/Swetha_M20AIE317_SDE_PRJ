@@ -1,0 +1,207 @@
+C:\Users\dell\anaconda3\python.exe C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\rq1_cnn_2d.py 
+2022-11-17 01:28:37.683942: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-11-17 01:28:37.684770: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Processing ComplexMethod with Params: conv_layers=1, filter=64, kernel=11, pooling_window=5, epochs=2 
+reading data...
+width array size 20791
+min width 10
+max width 625
+mean width 42.70881631475157
+standard deviation 25.23915828739545
+median width 37.0
+number of upper outliers removed 1940
+max width excluding upper outliers 67
+height array size 20788
+min height 3
+max height 1567
+mean height 34.96199730613816
+standard deviation 42.033689527737295
+median height 25.0
+number of upper outliers removed 1331
+max height excluding upper outliers 76
+width array size 421251
+min width 0
+max width 994
+mean width 24.968878412158073
+standard deviation 23.067454169715145
+median width 20.0
+number of upper outliers removed 27838
+max width excluding upper outliers 48
+height array size 421230
+min height 0
+max height 1998
+mean height 8.248291907034162
+standard deviation 22.24916437745836
+median height 5.0
+number of upper outliers removed 8669
+max height excluding upper outliers 30
+reading data... done.
+2022-11-17 01:40:46.453941: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-11-17 01:40:46.456043: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-11-17 01:40:46.466469: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-C4CN5G3
+2022-11-17 01:40:46.466764: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-C4CN5G3
+2022-11-17 01:40:46.475938: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 66, 57, 64)        7808      
+                                                                 
+ batch_normalization (BatchN  (None, 66, 57, 64)       256       
+ ormalization)                                                   
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 31, 27, 64)       0         
+ )                                                               
+                                                                 
+ spatial_dropout2d (SpatialD  (None, 31, 27, 64)       0         
+ ropout2D)                                                       
+                                                                 
+ flatten (Flatten)           (None, 53568)             0         
+                                                                 
+ dense (Dense)               (None, 32)                1714208   
+                                                                 
+ dense_1 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 1,722,305
+Trainable params: 1,722,177
+Non-trainable params: 128
+_________________________________________________________________
+Epoch 1/2
+40/40 [==============================] - 1745s 43s/step - loss: 1.5263 - accuracy: 0.8769
+Epoch 2/2
+40/40 [==============================] - 1456s 36s/step - loss: 0.4064 - accuracy: 0.9070
+auc_keras:0.8947529944206823
+Test accuracy: 0.7504197359085083
+Precision score: 0.21
+Recall score: 0.95
+F1 score: 0.35
+Average precision-recall score: 0.20
+Processing ComplexConditional with Params: onv_layers=2, filter=64, kernel=7, pooling_window=2,epochs=2
+reading data...
+width array size 5147
+min width 4
+max width 508
+mean width 57.2300369147076
+standard deviation 30.9865744171845
+median width 50.0
+number of upper outliers removed 475
+max width excluding upper outliers 88
+height array size 5146
+min height 1
+max height 1018
+mean height 26.161484648270502
+standard deviation 48.68051578239221
+median height 14.0
+number of upper outliers removed 321
+max height excluding upper outliers 74
+width array size 436236
+min width 0
+max width 994
+mean width 25.41945414867182
+standard deviation 23.08183540924437
+median width 21.0
+number of upper outliers removed 30709
+max width excluding upper outliers 48
+height array size 436212
+min height 0
+max height 1998
+mean height 9.310055661008867
+standard deviation 23.73485698618279
+median height 5.0
+number of upper outliers removed 12985
+max height excluding upper outliers 33
+reading data... done.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 68, 82, 64)        3200      
+                                                                 
+ batch_normalization (BatchN  (None, 68, 82, 64)       256       
+ ormalization)                                                   
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 34, 41, 64)       0         
+ )                                                               
+                                                                 
+ conv2d_1 (Conv2D)           (None, 28, 35, 128)       401536    
+                                                                 
+ batch_normalization_1 (Batc  (None, 28, 35, 128)      512       
+ hNormalization)                                                 
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, 14, 17, 128)      0         
+ 2D)                                                             
+                                                                 
+ spatial_dropout2d (SpatialD  (None, 14, 17, 128)      0         
+ ropout2D)                                                       
+                                                                 
+ flatten (Flatten)           (None, 30464)             0         
+                                                                 
+ dense (Dense)               (None, 32)                974880    
+                                                                 
+ dense_1 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 1,380,417
+Trainable params: 1,380,033
+Non-trainable params: 384
+_________________________________________________________________
+Epoch 1/2
+27/27 [==============================] - 585s 10s/step - loss: 0.6487 - accuracy: 0.8451
+Epoch 2/2
+27/27 [==============================] - 255s 9s/step - loss: 0.3729 - accuracy: 0.8693
+auc_keras:0.5000692664681028
+Test accuracy: 0.011006325483322144
+Precision score: 0.01
+Recall score: 1.00
+F1 score: 0.02
+Average precision-recall score: 0.01
+Processing FeatureEnvy with Params: conv_layers=2, filter=16, kernel=5, pooling_window=3, epochs=3 
+reading data...
+width array size 1901
+min width 7
+max width 830
+mean width 56.44029458179905
+standard deviation 55.97039531509542
+median width 43.0
+number of upper outliers removed 126
+max width excluding upper outliers 112
+height array size 1888
+min height 1
+max height 1995
+mean height 172.18802966101694
+standard deviation 267.3525970494468
+median height 80.0
+number of upper outliers removed 181
+max height excluding upper outliers 430
+width array size 131156
+min width 0
+max width 999
+mean width 34.780864009271404
+standard deviation 51.86013448836514
+median width 25.0
+number of upper outliers removed 6383
+max width excluding upper outliers 86
+height array size 131076
+min height 0
+max height 1989
+mean height 43.813268638042054
+standard deviation 88.13489304984266
+median height 20.0
+number of upper outliers removed 8306
+max height excluding upper outliers 131
+Traceback (most recent call last):
+  File "C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\rq1_cnn_2d.py", line 265, in <module>
+    run_final()
+  File "C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\rq1_cnn_2d.py", line 209, in run_final
+    input_data3 = get_all_data(data_path3, smell)
+  File "C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\rq1_cnn_2d.py", line 101, in get_all_data
+    inputs.get_data_2d(data_path, OUT_FOLDER, "rq1_cnn2d_" + smell,
+  File "C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\inputs.py", line 481, in get_data_2d
+    neg_data_arr = _retrieve_data_2d(folder_path, max_input_width, max_input_height)
+  File "C:\WorkSpace\Swetha_M20AIE317_SDE_PRJS\DeepLearningSmells\program\dl_models\inputs.py", line 556, in _retrieve_data_2d
+    cur_input = np.zeros((max_input_height, max_input_width), dtype=np.int32)
+numpy.core._exceptions.MemoryError: Unable to allocate 188. KiB for an array with shape (430, 112) and data type int32
+
+Process finished with exit code 1
