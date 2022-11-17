@@ -54,3 +54,23 @@ We balance the number of samples for training by choosing the smaller number fro
 
 Note:We fine tuned the hyper parameters for data processing, for 1D and 2D ,but results are based on less number of epoch since it was taking time and my system got crashed multiple times while executing and was not able to capture the results, and we have processed data processing for C# code smell though we got generated data for both C# and Java source code.And we have used only three Code Smell detections which  are to be feature envy, Complex method which is long method and Complex condition which is large class as though we are able to generate the training data, we were unable to process for data processing due to system crash and deadline.
 
+# Reference: 
+https://ieeexplore.ieee.org/document/9914414 
+https://ieeexplore.ieee.org/document/9761969 
+https://ieeexplore.ieee.org/document/9724775 
+https://ieeexplore.ieee.org/document/9724436 
+https://ieeexplore.ieee.org/document/9596476 
+https://dl.acm.org/doi/10.1145/3477535 
+https://onlinelibrary.wiley.com/doi/10.1002/smr.2369
+https://github.com/tushartushar/DeepLearningSmells
+https://link.springer.com/article/10.1007/s11432-019-2830-8 
+https://dl.acm.org/doi/10.1145/3387940.3392191 
+https://journals.sagepub.com/doi/10.1177/1063293X20958932 
+https://link.springer.com/article/10.1007/s13369-020-04365-1 
+https://ieeexplore.ieee.org/document/9529815 
+https://ieeexplore.ieee.org/document/9392959  
+https://link.springer.com/chapter/10.1007/978-981-15-7984-4_37
+https://ieeexplore.ieee.org/document/9424815 
+https://ieeexplore.ieee.org/document/9359294 
+https://ieeexplore.ieee.org/document/9054826  
+Nuthan Munaiah, Steven Kroh, Craig Cabrey, and Meiyappan Nagappan. 2017. Curating GitHub for engineered software projects. Empirical Software Engineering 22, 6 (01 Dec 2017), 3219–3253. https://doi.org/10.1007/s10664 - 017- 9512- 6
