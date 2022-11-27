@@ -19,6 +19,8 @@ from sklearn.dummy import DummyClassifier
 DIM = "1d"
 C2V = False # It means whether we are analyzing plain source code that is tokenized (False) or vectors from Code2Vec (True)
 TOKENIZER_BASE_PATH = r'C:\WorkSpace\Swetha_M20AIE317_SDE_PRJ\DeepLearningSmells'
+TRAINING_BASE_PATH = r'C:\WorkSpace\Swetha\IITJ\sde\M20AIE317_209_SDE_Project\Swetha_M20AIE317_SDE_PRJ\DeepLearningSmells'
+
 if C2V:
     # TOKENIZER_OUT_PATH = "/users/pa18/tushar/smellDetectionML/data/c2v_vectors/"
     # OUT_FOLDER = "/users/pa18/tushar/smellDetectionML/learning_smells/results/rq1/raw"
@@ -28,10 +30,10 @@ else:
     # TOKENIZER_OUT_PATH = "../../data/tokenizer_out_cs/"
     # OUT_FOLDER = "../results/rq1/raw_temp"
     TOKENIZER_OUT_PATH = os.path.join(TOKENIZER_BASE_PATH, r'data\tokenizer_cs')
-    OUT_FOLDER = os.path.join(TOKENIZER_BASE_PATH, r'learning_smells\results\rq1_rnn_emb_lstm_1d\raw')
+    OUT_FOLDER = os.path.join(TRAINING_BASE_PATH, r'learning_smells\results_improved\rq1_rnn_emb_lstm_1d\raw\FeatureEnvy')
 
-TRAIN_VALIDATE_RATIO = 0.7
-CLASSIFIER_THRESHOLD = 0.7
+TRAIN_VALIDATE_RATIO = 0.8
+CLASSIFIER_THRESHOLD = 0.8
 
 
 # ---
@@ -166,7 +168,7 @@ def main(data_path, smell, skip_iter=-1, iterations_to_process=100):
     cur_iter = 1
     outfile = get_out_file(smell)
     write_result(outfile,
-                 "embedding_out,rnn_layers,lstm_units,epochs,stopped_epoch,auc,accuracy,precision,recall,f1,average_precision,time\n")
+                 "embedding_out,rnn_layers,lstm_units,epochs,stopped_epoch,auc,test_accuracy,precision,recall,f1,average_precision,time\n")
     for layer in rnn_layers:
         for emb_output in emb_outputs:
             for lstm_units in lstms_units:
@@ -220,7 +222,7 @@ def run_rnn_with_best_params(smell, input_data, rnn_layers, emb_output, lstm_uni
         dropout=0.2)
     outfile = get_out_file(smell + "final")
     write_result(outfile,
-                 "embedding_out,rnn_layers,lstm_units,epochs,stopped_epoch,auc,accuracy,precision,recall,f1,average_precision,time\n")
+                 "embedding_out,rnn_layers,lstm_units,epochs,stopped_epoch,auc,test_accuracy,precision,recall,f1,average_precision,time\n")
 
     try:
         start_time = time.time()
@@ -252,19 +254,19 @@ def run_final():
     # print("Processing {} with Params: emb_output=32, rnn_layers=1, lstm_units=64, epochs=2 ".format(smell))
     # data_path1 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
     # input_data1 = get_all_data(data_path1, smell)
-    # run_rnn_with_best_params(smell, input_data=input_data1, emb_output=32, rnn_layers=1, lstm_units=64, epochs=2)
-    #
-    # smell = "ComplexConditional"
-    # print("Processing {} with Params: emb_output=32, rnn_layers=1, lstm_units=64, epochs=3 ".format(smell))
-    # data_path2 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
-    # input_data2 = get_all_data(data_path2, smell)
-    # run_rnn_with_best_params(smell, input_data=input_data2, emb_output=32, rnn_layers=1, lstm_units=64, epochs=2)
+    # run_rnn_with_best_params(smell, input_data=input_data1, emb_output=32, rnn_layers=2, lstm_units=64, epochs=2)
 
-    smell = "FeatureEnvy"
-    print("Processing {} with Params: emb_output=16, rnn_layers=2, lstm_units=64, epochs=3 ".format(smell))
-    data_path3 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
-    input_data3 = get_all_data(data_path3, smell)
-    run_rnn_with_best_params(smell, input_data=input_data3, emb_output=16, rnn_layers=2, lstm_units=64, epochs=3)
+    smell = "ComplexConditional"
+    print("Processing {} with Params: emb_output=32, rnn_layers=1, lstm_units=64, epochs=3 ".format(smell))
+    data_path2 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
+    input_data2 = get_all_data(data_path2, smell)
+    run_rnn_with_best_params(smell, input_data=input_data2, emb_output=32, rnn_layers=2, lstm_units=64, epochs=2)
+
+    # smell = "FeatureEnvy"
+    # print("Processing {} with Params: emb_output=16, rnn_layers=2, lstm_units=64, epochs=3 ".format(smell))
+    # data_path3 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
+    # input_data3 = get_all_data(data_path3, smell)
+    # run_rnn_with_best_params(smell, input_data=input_data3, emb_output=16, rnn_layers=2, lstm_units=64, epochs=3)
 
     # smell = "MultifacetedAbstraction"
     # data_path4 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)

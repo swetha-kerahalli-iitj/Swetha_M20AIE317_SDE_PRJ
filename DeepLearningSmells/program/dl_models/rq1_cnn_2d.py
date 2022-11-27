@@ -21,8 +21,10 @@ DIM = "2d"
 # TOKENIZER_OUT_PATH = "/users/pa18/tushar/smellDetectionML/data/tokenizer_out"
 # OUT_FOLDER = "/users/pa18/tushar/smellDetectionML/program/results/rq1/raw"
 TOKENIZER_BASE_PATH = r'C:\WorkSpace\Swetha_M20AIE317_SDE_PRJ\DeepLearningSmells'
+TRAINING_BASE_PATH = r'C:\WorkSpace\Swetha\IITJ\sde\M20AIE317_209_SDE_Project\Swetha_M20AIE317_SDE_PRJ\DeepLearningSmells'
+
 TOKENIZER_OUT_PATH = os.path.join(TOKENIZER_BASE_PATH, r'data\tokenizer_cs')
-OUT_FOLDER = os.path.join(TOKENIZER_BASE_PATH, r'learning_smells\results\rq1_cnn_2d\raw')
+OUT_FOLDER = os.path.join(TRAINING_BASE_PATH, r'learning_smells\results_improved\rq1_cnn_2d\raw\ComplexMethod')
 TRAIN_VALIDATE_RATIO = 0.7
 CLASSIFIER_THRESHOLD = 0.7
 # ------------
@@ -196,18 +198,18 @@ def run_final():
     input_data1 = get_all_data(data_path1, smell)
     run_cnn_with_best_params(smell, input_data=input_data1, conv_layers=1, filter=64, kernel=11, pooling_window=5,epochs=2)
 
-    smell = "ComplexConditional"
-    print("Processing {} with Params: onv_layers=2, filter=64, kernel=7, pooling_window=2,epochs=2".format(smell))
-    data_path2 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell, smell), DIM)
-    input_data2 = get_all_data(data_path2, smell)
-    run_cnn_with_best_params(smell, input_data=input_data2, conv_layers=2, filter=64, kernel=7, pooling_window=2,
-                             epochs=2)
-
-    smell = "FeatureEnvy"
-    print("Processing {} with Params: conv_layers=2, filter=16, kernel=5, pooling_window=3, epochs=3 ".format(smell))
-    data_path3 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell, smell), DIM)
-    input_data3 = get_all_data(data_path3, smell)
-    run_cnn_with_best_params(smell, input_data=input_data3, conv_layers=2, filter=16, kernel=5, pooling_window=3,epochs=3)
+    # smell = "ComplexConditional"
+    # print("Processing {} with Params: onv_layers=2, filter=64, kernel=7, pooling_window=2,epochs=2".format(smell))
+    # data_path2 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell, smell), DIM)
+    # input_data2 = get_all_data(data_path2, smell)
+    # run_cnn_with_best_params(smell, input_data=input_data2, conv_layers=2, filter=64, kernel=7, pooling_window=2,
+    #                          epochs=2)
+    #
+    # smell = "FeatureEnvy"
+    # print("Processing {} with Params: conv_layers=2, filter=16, kernel=5, pooling_window=3, epochs=3 ".format(smell))
+    # data_path3 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell, smell), DIM)
+    # input_data3 = get_all_data(data_path3, smell)
+    # run_cnn_with_best_params(smell, input_data=input_data3, conv_layers=2, filter=16, kernel=5, pooling_window=3,epochs=3)
 
     # smell = "MultifacetedAbstraction"
     # data_path4 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell), DIM)

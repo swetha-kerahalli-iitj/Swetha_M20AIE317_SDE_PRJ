@@ -16,6 +16,7 @@ DIM = "1d"
 
 MODE = "train_cs"  # "train_cs" or "train_java" representing whether the training data is coming from C# samples or java.
 TOKENIZER_BASE_PATH = r'C:\WorkSpace\Swetha_M20AIE317_SDE_PRJ\DeepLearningSmells'
+TRAINING_BASE_PATH = r'C:\WorkSpace\Swetha\IITJ\sde\M20AIE317_209_SDE_Project\Swetha_M20AIE317_SDE_PRJ\DeepLearningSmells'
 
 if MODE == "train_cs":
     # TRAINING_TOKENIZER_OUT_PATH = "../../data/tokenizer_out_cs/"
@@ -23,7 +24,7 @@ if MODE == "train_cs":
     # OUT_FOLDER = "../results/rq2/raw"
     EVAL_TOKENIZER_OUT_PATH = os.path.join(TOKENIZER_BASE_PATH, r'data\tokenizer_java')
     TRAINING_TOKENIZER_OUT_PATH = os.path.join(TOKENIZER_BASE_PATH, r'data\tokenizer_cs')
-    OUT_FOLDER = os.path.join(TOKENIZER_BASE_PATH, r'learning_smells\results\rq2_rnn_emb_lstm_test')
+    OUT_FOLDER = os.path.join(TRAINING_BASE_PATH, r'learning_smells\results_improved\rq2_rnn_emb_lstm_test\raw\ComplexMethod')
 else:
     # TRAINING_TOKENIZER_OUT_PATH = "../../data/java_500/tokenizer_out/"
     # EVAL_TOKENIZER_OUT_PATH = "../../data/cs_100/tokenizer_out/"
@@ -32,7 +33,7 @@ else:
     EVAL_TOKENIZER_OUT_PATH = "/users/pa18/tushar/smellDetectionML/data/cs_100/tokenizer_out/"
     OUT_FOLDER = "/users/pa18/tushar/smellDetectionML/learning_smells/results/rq2_rnn_emb_ltm_test/raw"
 
-TRAIN_VALIDATE_RATIO = 0.7
+TRAIN_VALIDATE_RATIO = 0.8
 
 
 # --------------------------
@@ -129,7 +130,7 @@ def main(training_data_path, eval_data_path, smell, skip_iter=-1):
 def run_rnn_with_best_params(data, smell, emb_output, lstm_units, layer, epoch):
     outfile = get_out_file(smell + "final")
     write_result(outfile,
-                 "embedding_out,rnn_layers,lstm_units,epochs,stopped_epoch,auc,accuracy,precision,recall,f1,average_precision,time\n")
+                 "embedding_out,rnn_layers,lstm_units,epochs,stopped_epoch,auc,test_accuracy,precision,recall,f1,average_precision,time\n")
     config = configuration.RNN_emb_lstm_config(
         emb_output=emb_output,
         lstm_units=lstm_units,
@@ -178,22 +179,22 @@ if __name__ == "__main__":
     # training_data_path = os.path.join(os.path.join(TRAINING_TOKENIZER_OUT_PATH, smell,smell), DIM)
     # eval_data_path = os.path.join(os.path.join(EVAL_TOKENIZER_OUT_PATH, smell,smell), DIM)
     # data1 = get_all_data(training_data_path, eval_data_path, smell)
-    # run_rnn_with_best_params(data1, smell, emb_output=16, lstm_units=32, layer=1, epoch=2)
+    # run_rnn_with_best_params(data1, smell, emb_output=16, lstm_units=32, layer=2, epoch=2)
     #
     #
-    # smell = "ComplexConditional"
-    # print("Processing {} with Params: emb_output=32, lstm_units=32, layer=1, epoch=2 ".format(smell))
-    # training_data_path = os.path.join(os.path.join(TRAINING_TOKENIZER_OUT_PATH, smell,smell), DIM)
-    # eval_data_path = os.path.join(os.path.join(EVAL_TOKENIZER_OUT_PATH, smell,smell), DIM)
-    # data2 = get_all_data(training_data_path, eval_data_path, smell)
-    # run_rnn_with_best_params(data2, smell, emb_output=32, lstm_units=32, layer=1, epoch=2)
-
-    smell = "FeatureEnvy"
-    print("Processing {} with Params: emb_output=32, lstm_units=128, layer=1, epoch=3 ".format(smell))
+    smell = "ComplexConditional"
+    print("Processing {} with Params: emb_output=32, lstm_units=32, layer=2, epoch=2 ".format(smell))
     training_data_path = os.path.join(os.path.join(TRAINING_TOKENIZER_OUT_PATH, smell,smell), DIM)
-    eval_data_path = os.path.join(os.path.join(EVAL_TOKENIZER_OUT_PATH, smell+'_'+DIM), DIM)
-    data3 = get_all_data(training_data_path, eval_data_path, smell)
-    run_rnn_with_best_params(data3, smell, emb_output=20, lstm_units=64, layer=1, epoch=2)
+    eval_data_path = os.path.join(os.path.join(EVAL_TOKENIZER_OUT_PATH, smell,smell), DIM)
+    data2 = get_all_data(training_data_path, eval_data_path, smell)
+    run_rnn_with_best_params(data2, smell, emb_output=32, lstm_units=64, layer=2, epoch=3)
+
+    # smell = "FeatureEnvy"
+    # print("Processing {} with Params: emb_output=32, lstm_units=128, layer=1, epoch=3 ".format(smell))
+    # training_data_path = os.path.join(os.path.join(TRAINING_TOKENIZER_OUT_PATH, smell,smell), DIM)
+    # eval_data_path = os.path.join(os.path.join(EVAL_TOKENIZER_OUT_PATH, smell+'_'+DIM), DIM)
+    # data3 = get_all_data(training_data_path, eval_data_path, smell)
+    # run_rnn_with_best_params(data3, smell, emb_output=20, lstm_units=64, layer=1, epoch=2)
     #
     # smell = "MultifacetedAbstraction"
     # training_data_path = os.path.join(os.path.join(TRAINING_TOKENIZER_OUT_PATH, smell,smell), DIM)

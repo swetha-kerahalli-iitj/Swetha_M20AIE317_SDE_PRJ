@@ -17,6 +17,7 @@ from sklearn.dummy import DummyClassifier
 DIM = "1d"
 C2V = False  # True # It means whether we are analyzing plain source code that is tokenized (False) or vectors from Code2Vec (True)
 TOKENIZER_BASE_PATH = r'C:\WorkSpace\Swetha_M20AIE317_SDE_PRJ\DeepLearningSmells'
+TRAINING_BASE_PATH = r'C:\WorkSpace\Swetha\IITJ\sde\M20AIE317_209_SDE_Project\Swetha_M20AIE317_SDE_PRJ\DeepLearningSmells'
 
 if C2V:
     # TOKENIZER_OUT_PATH = "/users/pa18/tushar/smellDetectionML/data/c2v_vectors/"
@@ -25,12 +26,12 @@ if C2V:
     OUT_FOLDER = r"..\results\rq1\raw"
 else:
     TOKENIZER_OUT_PATH = os.path.join(TOKENIZER_BASE_PATH, r'data\tokenizer_cs')
-    OUT_FOLDER = os.path.join(TOKENIZER_BASE_PATH, r'learning_smells\results\rq1_cnn_1d_123\raw')
+    OUT_FOLDER = os.path.join(TRAINING_BASE_PATH, r'learning_smells\results_improved\rq1_cnn_1d\raw')
     # TOKENIZER_OUT_PATH = r"..\..\data\tokenizer_out"
     # OUT_FOLDER = r"..\results\rq1\raw"
 
-TRAIN_VALIDATE_RATIO = 0.7
-CLASSIFIER_THRESHOLD = 0.5
+TRAIN_VALIDATE_RATIO = 0.8
+CLASSIFIER_THRESHOLD = 0.8
 
 
 # --
@@ -158,7 +159,7 @@ def main(smell, data_path):
     cur_iter = 1
     outfile = get_out_file(smell)
     write_result(outfile,
-                 "conv_layers,filters,kernel,max_pooling_window,epoch,stopped_epoch,auc,accuracy,precision,recall,f1,average_precision,time\n")
+                 "conv_layers,filters,kernel,max_pooling_window,epoch,stopped_epoch,auc,test_accuracy,precision,recall,f1,average_precision,time\n")
     for layer in conv_layers:
         for filter in filters:
             for kernel in kernels:
@@ -211,26 +212,31 @@ def run_cnn_with_best_params(smell, input_data, conv_layers, filter, kernel, poo
 
 
 def run_final():
+    smell_list.clear()
+
     # smell = "ComplexMethod"
+    # smell_list.append(smell)
     # print("Processing {} with Params: conv_layers=2, filter=32, kernel=5, pooling_window=4,epochs=2 ".format(smell))
     # data_path1 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
     # input_data1 = get_all_data(data_path1, smell)
     # run_cnn_with_best_params(smell, input_data=input_data1, conv_layers=2, filter=32, kernel=5, pooling_window=4,
     #                          epochs=2)
     #
-    # smell = "ComplexConditional"
-    # print("Processing {} with Params: conv_layers=1, filter=32, kernel=5, pooling_window=4,epochs=2 ".format(smell))
-    # data_path2 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
-    # input_data2 = get_all_data(data_path2, smell)
-    # run_cnn_with_best_params(smell, input_data=input_data2, conv_layers=1, filter=32, kernel=5, pooling_window=4,
-    #                          epochs=2)
+    smell = "ComplexConditional"
+    smell_list.append(smell)
+    print("Processing {} with Params: conv_layers=1, filter=32, kernel=5, pooling_window=4,epochs=2 ".format(smell))
+    data_path2 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
+    input_data2 = get_all_data(data_path2, smell)
+    run_cnn_with_best_params(smell, input_data=input_data2, conv_layers=1, filter=32, kernel=5, pooling_window=4,
+                             epochs=2)
 
-    smell = "FeatureEnvy"
-    print("Processing {} with Params: conv_layers=2, filter=32, kernel=11, pooling_window=2,epochs=3 ".format(smell))
-    data_path3 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
-    input_data3 = get_all_data(data_path3, smell)
-    run_cnn_with_best_params(smell, input_data=input_data3, conv_layers=2, filter=32, kernel=11, pooling_window=2,
-                             epochs=3)
+    # smell = "FeatureEnvy"
+    # smell_list.append(smell)
+    # print("Processing {} with Params: conv_layers=2, filter=32, kernel=11, pooling_window=2,epochs=3 ".format(smell))
+    # data_path3 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
+    # input_data3 = get_all_data(data_path3, smell)
+    # run_cnn_with_best_params(smell, input_data=input_data3, conv_layers=2, filter=32, kernel=11, pooling_window=2,
+    #                          epochs=3)
     #
     # smell = "MultifacetedAbstraction"
     # data_path4 = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
@@ -243,7 +249,7 @@ def measure_random_performance():
     outfile = get_out_file("random_classifier")
     write_result(outfile, "smell,auc,precision,recall,f1,average_precision\n")
     for smell in smell_list:
-        data_path = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell), DIM)
+        data_path = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
         input_data = get_all_data(data_path, smell)
         y_pred = np.random.randint(2, size=len(input_data.eval_labels))
 
@@ -259,7 +265,7 @@ def measure_performance_dummy_classifier():
     outfile = get_out_file("dummy_classifier")
     write_result(outfile, "smell,auc,precision,recall,f1,average_precision\n")
     for smell in smell_list:
-        data_path = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell), DIM)
+        data_path = os.path.join(os.path.join(TOKENIZER_OUT_PATH, smell,smell), DIM)
         input_data = get_all_data(data_path, smell)
         # clf = DummyClassifier(strategy='stratified', random_state=0)
         clf = DummyClassifier(strategy='most_frequent', random_state=0)
@@ -295,4 +301,4 @@ if __name__ == "__main__":
     # measure_random_performance()
 
     # Let's say what a dummy classifier says
-    # measure_performance_dummy_classifier()
+    #measure_performance_dummy_classifier()
