@@ -1,0 +1,79 @@
+C:\Users\dell\anaconda3\python.exe C:\WorkSpace\Swetha\IITJ\sde\M20AIE317_209_SDE_Project\Swetha_M20AIE317_SDE_PRJ\DeepLearningSmells\program\dl_models\rq1_cnn_1d.py 
+2022-11-26 18:51:54.439543: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-11-26 18:51:54.439808: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Processing ComplexMethod with Params: conv_layers=2, filter=32, kernel=5, pooling_window=4,epochs=2 
+reading data...
+width array size 26165
+min width 1
+max width 57012
+mean width 390.1758838142557
+standard deviation 681.7263155919946
+median width 288.0
+number of upper outliers removed 1204
+max width excluding upper outliers 1071
+width array size 466508
+min width 1
+max width 221890
+mean width 91.47690286125854
+standard deviation 653.9545376586921
+median width 49.0
+number of upper outliers removed 2553
+max width excluding upper outliers 745
+train_data: 10000
+train_labels: 10000
+eval_data: 97967
+eval_labels: 97967
+reading data... done.
+2022-11-26 18:52:34.062821: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-11-26 18:52:34.063433: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-11-26 18:52:34.070410: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-C4CN5G3
+2022-11-26 18:52:34.070736: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-C4CN5G3
+2022-11-26 18:52:34.076872: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv1d (Conv1D)             (None, 1067, 32)          192       
+                                                                 
+ batch_normalization (BatchN  (None, 1067, 32)         128       
+ ormalization)                                                   
+                                                                 
+ max_pooling1d (MaxPooling1D  (None, 532, 32)          0         
+ )                                                               
+                                                                 
+ conv1d_1 (Conv1D)           (None, 528, 64)           10304     
+                                                                 
+ batch_normalization_1 (Batc  (None, 528, 64)          256       
+ hNormalization)                                                 
+                                                                 
+ activation (Activation)     (None, 528, 64)           0         
+                                                                 
+ max_pooling1d_1 (MaxPooling  (None, 263, 64)          0         
+ 1D)                                                             
+                                                                 
+ dropout (Dropout)           (None, 263, 64)           0         
+                                                                 
+ flatten (Flatten)           (None, 16832)             0         
+                                                                 
+ dense (Dense)               (None, 32)                538656    
+                                                                 
+ dense_1 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 549,569
+Trainable params: 549,377
+Non-trainable params: 192
+_________________________________________________________________
+Epoch 1/2
+40/40 [==============================] - 36s 884ms/step - loss: 0.5649 - accuracy: 0.8165
+Epoch 2/2
+40/40 [==============================] - 35s 883ms/step - loss: 0.3721 - accuracy: 0.8490
+auc_keras:0.8274228067120243
+Test accuracy: 0.8576765656471252
+Precision score: 0.27
+Recall score: 0.76
+F1 score: 0.40
+Average precision-recall score: 0.22
+
+Process finished with exit code 0
